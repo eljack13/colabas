@@ -9,16 +9,25 @@ use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 
 $this->title = 'Iniciar sesión';
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+ 
 
-    <p>Please fill out the following fields to login:</p>
+<div class="register-index">
+<body>
+    <div class="container-all">
 
-    <div class="row">
-        <div class="col-lg-5">
+    <div class="ctn-text">
+                    <div class="capa">
+                        <h1 class="title-description">IDEAS LOCAS</h1>
+                            <p class="text-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, voluptatibus.</p>
+                    </div>
+                </div>
 
+        <div class="ctn-form">
+        <h1 class="title">Iniciar Sesión</h1>
+        <img src="logo.png" alt="" class="logoo">
             <?php $form = ActiveForm::begin([
                 'id' => 'login-form',
                 'fieldConfig' => [
@@ -29,27 +38,40 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
             ]); ?>
 
-            <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+            <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'class' => 'inputpass']) ?>
 
-            <?= $form->field($model, 'password')->passwordInput() ?>
+            <?= $form->field($model, 'password')->passwordInput(['class' => 'inputpass']) ?>
 
-            <?= $form->field($model, 'rememberMe')->checkbox([
-                'template' => "<div class=\"custom-control custom-checkbox\">{input} {label}</div>\n<div class=\text-primary\">{error}</div>",
-            ]) ?>
+            <?= $form->field($model, 'rememberMe')->checkbox(['template' => "<div class=\"custom-control custom-checkbox\">{input} {label}</div><div class=\text-secondary\">{error}</div>",]) ?>
            <span class="primary-text mb-2 col-lg-8">¿No tienes una cuenta? <?= Html::a('Regístrate', ['register/index']) ?></span>
 
             <div class="form-group">
                 <div>
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary mt-2', 'name' => 'login-button']) ?>
+                    <?= Html::submitButton('Login', ['class' => 'input-button', 'name' => 'login-button']) ?>
                 </div>
             </div>
 
             <?php ActiveForm::end(); ?>
 
         
-
+                </div>  
         </div>
     </div>
+
+
+    </div>
+</body>
+
 </div>
 
+<style>
+    .register-index{ 
+        margin-top: -1.25%;
+    }
+    
 
+    body{ 
+        background: linear-gradient(90deg, #FEEBBB, #f5918c);
+    }
+
+</style>

@@ -27,28 +27,31 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <?php $this->head() ?>
 </head>
 <body class="d-flex flex-column h-100">
-<?php $this->beginBody() ?>
+<?php $this->beginBody()
+?>
 
 <header id="header">
     <?php
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
-        'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
+        'options' => ['class' => 'navbar-expand-md fixed-top navbar-expand-lg bg-light']
+        
     ]);
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav d-flex flex-row justify-content-end w-100'],
+        'options' => ['class' => 'navbar-nav d-flex flex-row w-100 navbar-expand-lg navbar-light bg-gradient-warning justify-content-center'],
         'items' => [
-            ['label' => 'Inicio','url' => ['/site/index'],'linkOptions' => ['class' => 'nav-link nav-link-home']], 
-            ['label' => 'Sobre Nosotros', 'url' => ['/site/about'],'linkOptions' => ['class' => 'nav-link nav-link-home']],
-            ['label' => 'Contactanos', 'url' => ['/site/contact']],
+            ['label' => 'Inicio','url' => ['/site/index'],'linkOptions' => ['class' => 'nav-link nav-link-home px-2']],
+            ['label'=> 'Productos','url'=> ['#'],'linkOptions'=> ['nav-link nav-link-home px-2']],
+            ['label' => 'Acerca', 'url' => ['/site/about'],'linkOptions' => ['class' => 'nav-link nav-link-home px-2']],
+           // ['label' => 'Contactanos', 'url' => ['/site/contact'], 'linkOptions' => ['class' => 'nav-link nav-link-home px-1']],
+          
             Yii::$app->user->isGuest
-                ? ['label' => 'Login', 'url' => ['/site/login']]
-                : '<li class="nav-item">'
+                ? ['label' => 'Cuenta', 'url' => ['/site/login'], 'linkOptions' => ['class' => 'navitem']]: '<li class="nav-item align-items-end justify-content-end">'
                     . Html::beginForm(['/site/logout'])
                     . Html::submitButton(
                         'Logout (' . Yii::$app->user->identity->tbl_register_nombre . ')',
-                        ['class' => '--nav-link btn btn-link logout']
+                        ['class' => '--nav-link btn btn-link logout px-1']
                     )
                     . Html::endForm()
                     . '</li>'
@@ -81,3 +84,4 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 </body>
 </html>
 <?php $this->endPage() ?>
+
