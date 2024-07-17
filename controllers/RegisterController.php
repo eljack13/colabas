@@ -23,6 +23,16 @@ class RegisterController extends Controller
         return array_merge(
             parent::behaviors(),
             [
+                'access' => [
+                    'class' => \yii\filters\AccessControl::className(),
+
+                    'rules' => [
+                        [
+                            'allow' => true,
+                            'roles' => ['?'],
+                        ],
+                    ],
+                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
@@ -41,20 +51,21 @@ class RegisterController extends Controller
      */
     public function actionIndex()
     {
+
         $model = new Register();
         //$searchModel = new RegisterSearch();
         //$dataProvider = $searchModel->search($this->request->queryParams);
-       
+
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
 
-                $model->tbl_registro_password = Yii::$app->getSecurity()->generatePasswordHash( $model->tbl_registro_password );
-            
+                $model->tbl_registro_password = Yii::$app->getSecurity()->generatePasswordHash($model->tbl_registro_password);
 
-                if( $model->save() ){
+
+                if ($model->save()) {
 
                     return $this->redirect(['site/login']);
-                }else{
+                } else {
 
 
                     $model->tbl_registro_password = "";
@@ -64,12 +75,11 @@ class RegisterController extends Controller
                         'model' => $model,
                     ]);
                 }
-                
             }
         } else {
             $model->loadDefaultValues();
         }
-        
+
 
         return $this->render('index', [
             // 'searchModel' => $searchModel,
@@ -77,15 +87,15 @@ class RegisterController extends Controller
             'model' => $model,
         ]);
     }
-          
-    
 
 
- // $searchModel = new RegisterSearch();
-       // $dataProvider = $searchModel->search($this->request->queryParams);
-   
-           // 'searchModel' => $searchModel,
-            //'dataProvider' => $dataProvider,
+
+
+    // $searchModel = new RegisterSearch();
+    // $dataProvider = $searchModel->search($this->request->queryParams);
+
+    // 'searchModel' => $searchModel,
+    //'dataProvider' => $dataProvider,
 
 
 
@@ -114,14 +124,14 @@ class RegisterController extends Controller
 
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post())){
+            if ($model->load($this->request->post())) {
 
-            $auth = \Yii::$app->authManager;
-            $authorRole = $auth->getRole('author');
-            $auth->assign($authorRole,$model->tbl_register_id);
-            $model->save(); 
+                $auth = \Yii::$app->authManager;
+                $authorRole = $auth->getRole('author');
+                $auth->assign($authorRole, $model->tbl_register_id);
+                $model->save();
                 return $this->redirect(['index']);
-             }
+            }
         } else {
             $model->loadDefaultValues();
         }
@@ -130,6 +140,7 @@ class RegisterController extends Controller
             'model' => $model,
         ]);
     }
+
 
     /**
      * Updates an existing Register model.
@@ -165,7 +176,7 @@ class RegisterController extends Controller
         return $this->redirect(['index']);
     }
 
-    
+
     /**
      * Finds the Register model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -181,5 +192,30 @@ class RegisterController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+
+
+
+
+
+
+
+
+
+
+
     
+    public function actionRegister()
+{
+    $model = new Register();
+
+    if ($this->request->isPost && $model->load($this->request->post()) && $model->validate()) {
+        // Guarda el usuario en la base de datos
+        $model->save();
+
+        // ... redirige o muestra un mensaje de éxito
+    }
+
+    return $this->render('register', ['model' => $model]);
+}
 }

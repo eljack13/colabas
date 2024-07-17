@@ -29,7 +29,7 @@ $this->title = 'Crear cuenta';
         <div class="container-all">
 
             <div class="ctn-form">
-                <img src="logo.png" alt="" class="logoo">
+            <?= Html::img('@web/logo.png', ['alt'=>'', 'class'=>'logoo']);?>
 
 
                 <h1 class="title">Registrarse</h1>
@@ -42,11 +42,12 @@ $this->title = 'Crear cuenta';
 
 
 
-                <span class="text-footer">Ya tienes cuenta? <?= Html::a('Regístrate', ['site/login']) ?></span>
+                <span class="text-footer">Ya tienes cuenta? <?= Html::a('Inicia Sesión', ['site/login']) ?></span>
             </div>
 
 
             <div class="ctn-text">
+            <?= Html::img('@web/img1.jpg', ['alt'=>'', 'class'=>'imagen']);?>
                 <div class="capa">
                     <h1 class="title-description">IDEAS LOCAS</h1>
                     <p class="text-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, voluptatibus.</p>

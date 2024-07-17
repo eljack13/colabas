@@ -1,27 +1,93 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-*{
+:root{
+    --custom-var : var-value
+}
+@property --custom-value {
+    syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
     text-decoration: unset;
 }
-main > .container {
+
+main>.container {
     padding: 70px 15px 20px;
 }
-header{ 
+
+header {
     background-color: var(--color-cornsilk)
 }
-.nav-link{ 
+
+
+.nav-link {
     margin-right: 80%;
 }
-.navitem{ 
-    margin-left: 500%;
-    border-radius: var(--br-5xs);
-    border: 1px solid var(--color-slategray);
-    box-sizing: border-box;
+
+.custom-dropdown-position .dropdown-menu {
+    position: absolute;
+    top: 100%; /* Ajusta estos valores según necesites */
+    right: 500px;
 }
+
+   /* Asegura que los elementos del menú desplegable se muestren correctamente */
+
+
+.common-class {
+    padding: 10px 15px; /* Añade padding para hacer los elementos más grandes */
+    background-color: #f8f9fa; /* Cambia el color de fondo para los elementos del menú desplegable */
+    color: #333; /* Cambia el color del texto para los elementos del menú desplegable */
+}
+
+.common-class:hover {
+    background-color: #e2e6ea; /* Cambia el color de fondo al pasar el mouse */
+}
+.navitem{   
+display: block;
+left: 100%;
+--color: #fd7e14;
+ font-family: inherit;
+ display: inline-block;
+ width: 100%;
+ position: relative;
+ overflow: hidden;
+ border: 2px solid var(--color);
+ transition: color .5s;
+ top: 5px;
+ border-radius: 6px;
+ color: var(--color);
+}
+.navitem:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+   }
+.navitem:hover {
+    color: #fff;
+   }
+  .navitem:before {
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+   }
+   .navitem:hover:before {
+    top: -30px;
+    left: -30px;
+   }
+   .navitem:active:before {
+    background: #f2eabc;
+    transition: background 0s;
+   }
 
 .footer {
     background-color: #f5f5f5;
@@ -29,7 +95,7 @@ header{
     height: 60px;
 }
 
-.footer > .container {
+.footer>.container {
     padding-right: 15px;
     padding-left: 15px;
 }
@@ -40,7 +106,8 @@ header{
 }
 
 /* add sorting icons to gridview sort links */
-a.asc:after, a.desc:after {
+a.asc:after,
+a.desc:after {
     content: '';
     left: 3px;
     display: inline-block;
@@ -80,14 +147,14 @@ a.desc:after {
 }
 
 /* align the logout "link" (button in form) of the navbar */
-.nav li > form > button.logout {
+.nav li>form>button.logout {
     padding-top: 7px;
     color: rgba(255, 255, 255, 0.5);
 }
 
 @media(max-width:767px) {
-    .nav li > form > button.logout   {
-        display:block;
+    .nav li>form>button.logout {
+        display: block;
         text-align: left;
         width: 100%;
         padding: 10px 0;
@@ -96,29 +163,36 @@ a.desc:after {
 }
 
 @media (max-width:767px) {
-    .navitem{ 
+    .navitem {
         margin-left: 300%;
     }
-    
+
 }
 
-.nav > li > form > button.logout:focus,
-.nav > li > form > button.logout:hover {
+.nav>li>form>button.logout:focus,
+.nav>li>form>button.logout:hover {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.75);
 }
 
-.nav > li > form > button.logout:focus {
+.nav>li>form>button.logout:focus {
     outline: none;
-}@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 
 .form-group {
     margin-bottom: 1rem;
 }
 
-.placeholder-glow{ 
+.placeholder-glow {
     width: 50%;
+}
+
+.icon {
+    width: 30px;
+
 }
 
 
@@ -135,7 +209,7 @@ a.desc:after {
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -144,9 +218,9 @@ a.desc:after {
 }
 
 
-body{
+body {
 
-   
+
     padding: 20px;
 
 }
@@ -156,7 +230,7 @@ body{
     margin-left: 25%;
 }
 
-.container-all{
+.container-all {
     width: 100%;
     max-width: 1000px;
     margin: auto;
@@ -167,14 +241,14 @@ body{
 }
 
 
-.ctn-form{
+.ctn-form {
 
     width: 80%;
     padding: 40px;
     background: #f3f3f3;
 }
 
-.title{
+.title {
 
     text-align: center;
     margin-top: 20px;
@@ -182,7 +256,7 @@ body{
     color: #7a7a7a;
 }
 
-label{
+label {
 
     display: block;
     margin-top: 30px;
@@ -191,116 +265,138 @@ label{
     color: #7a7a7a;
 }
 
-input{
+input {
 
     width: 100%;
     height: 30px;
     background: rgba(0, 0, 0, 0);
     border: 0;
     outline: 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12); 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     color: #f5918c;
 }
 
-.input-button{
-width: 100%;
-height: 50px;
-margin-top: 60px;
-color: #fff;
-border: 0px;
-background: linear-gradient(90deg, #FEEBBB, #f5918c);
-font-weight: 300;
-cursor: pointer;
-font-size: 20px;
-margin-bottom: 30px;
+.input-button {
+    width: 100%;
+    height: 50px;
+    margin-top: 60px;
+    color: #fff;
+    border: 0px;
+    background: linear-gradient(90deg, #FEEBBB, #f5918c);
+    font-weight: 300;
+    cursor: pointer;
+    font-size: 20px;
+    margin-bottom: 30px;
 }
 
 
 
 
-.input-button:hover{
-background: linear-gradient(90deg, #f5918c, #FEEBBB);
- animation: infinite 2s linear;
+.input-button:hover {
+    background: linear-gradient(90deg, #f5918c, #FEEBBB);
+    animation: infinite 2s linear;
 }
 
-.text-footer{
-display: block;
-margin-top: 60px;
-text-align: center;
-color: #7a7a7a;
-font-weight: 300;
+.text-footer {
+    display: block;
+    margin-top: 60px;
+    text-align: center;
+    color: #7a7a7a;
+    font-weight: 300;
 }
 
 
 /* LADO DERECHO */
 
-.ctn-text{
-width: 100%;
-background-image: url(img1.jpg);
-background-position: center;
-background-size: cover;
-padding: 40px;
-position: relative;
+.ctn-text {
+    width: 500%;
+    background-image: url(img1.jpg);
+    background-position: right;
+    background-size: cover;
+    position: relative;
 }
 
-.capa{
-width: 100%;
-height: 100%;
-position: absolute;
-top: 0;
-left: 0;
-background: linear-gradient(90deg, #fab143, #e2a448 );
-opacity: 0.9;
+.img1 {
+    width: 118%;
+    height: 110%;
+    background-position: right;
+    border-radius: 5%;
+    position: relative;
+    top: -5%;
+    left: -10%;
+
 }
 
-.title-description{
-position: relative;
-padding-left: 20px;
-top: 80px;
-color: #ffffff;
-font-weight: 500;
-font-size: 40px;
+.imagen {
+    width: 115%;
+    height: 110%;
+    background-position: left;
+    border-radius: 5%;
+    position: relative;
+    top: -5%;
+    left: -8%;
+
 }
 
-.text-description{
-position: relative;
-padding-left: 20px;
-top: 110px;
-color: #fff;
-font-size: 18px;
-font-weight: 300;
+.capa {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg, #fab143, #e2a448);
+    opacity: 0.9;
 }
 
-.logoo{
-width: 150px;
-display: block;
-margin: auto;
+.title-description {
+    position: relative;
+    padding-left: 20px;
+    top: 80px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 40px;
+}
+
+.text-description {
+    position: relative;
+    padding-left: 20px;
+    top: 110px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.logoo {
+    width: 150px;
+    display: block;
+    margin: auto;
 
 }
 
 /* RESPONSIVE */
 
 @media screen and (max-width: 768px) {
+    .container-all {
+        flex-direction: column;
+        margin-top: 50px;
+    }
+
+    .ctn-form {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .ctn-text {
+        display: none;
+        /* Esto oculta el lado derecho en pantallas pequeñas */
+    }
+}
+
 .container-all {
-    flex-direction: column;
-    margin-top: 50px;
-}
-
-.ctn-form {
+    border-radius: 50px;
     width: 100%;
-    padding: 20px;
-}
-
-.ctn-text {
-    display: none; /* Esto oculta el lado derecho en pantallas pequeñas */
-}
-}
-
-.container-all{ 
-border-radius:50px;
-width: 100%;
-max-width: 1000px;
-margin: auto;
-display: flex;
-overflow: hidden;
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    overflow: hidden;
 }

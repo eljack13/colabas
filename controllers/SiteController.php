@@ -6,7 +6,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
-use yii\filters\VerbFilter;
+
 use app\models\LoginForm;
 use app\models\ContactForm;
 
@@ -17,11 +17,11 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['login', 'logout', 'signup'],
+                'only' => ['login', 'logout', 'Register'],
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['login', 'signup'],
+                        'actions' => ['login', 'Register/index'],
                         'roles' => ['?'],
                     ],
                     [

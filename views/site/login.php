@@ -19,6 +19,7 @@ $this->title = 'Iniciar sesión';
     <div class="container-all">
 
     <div class="ctn-text">
+             <?= Html::img('@web/img1.jpg', ['alt'=>'', 'class'=>'img1']);?>
                     <div class="capa">
                         <h1 class="title-description">IDEAS LOCAS</h1>
                             <p class="text-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, voluptatibus.</p>
@@ -26,8 +27,8 @@ $this->title = 'Iniciar sesión';
                 </div>
 
         <div class="ctn-form">
+        <?= Html::img('@web/logo.png', ['alt'=>'', 'class'=>'logoo']);?>
         <h1 class="title">Iniciar Sesión</h1>
-        <img src="logo.png" alt="" class="logoo">
             <?php $form = ActiveForm::begin([
                 'id' => 'login-form',
                 'fieldConfig' => [
@@ -73,5 +74,24 @@ $this->title = 'Iniciar sesión';
     body{ 
         background: linear-gradient(90deg, #FEEBBB, #f5918c);
     }
+
+    .ctn-text{
+width: 100%;
+background-image: url(img1.jpg);
+background-position: center;
+background-size: cover;
+padding: 40px;
+position: relative;
+}
+.img2{ 
+    width: 0%;
+    height: 110%;
+    background-position:left;
+    border-radius: 10%;
+    position: relative;
+    top:-5%;
+    left: 5%;
+ 
+}
 
 </style>

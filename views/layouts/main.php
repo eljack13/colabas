@@ -31,33 +31,40 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 ?>
 
 <header id="header">
-    <?php
+   
+    <?php 
+    
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
-        'options' => ['class' => 'navbar-expand-md fixed-top navbar-expand-lg bg-light']
+        'options' => ['class' => 'navbar-expand-md fixed-top ']
         
     ]);
+   echo Html::img('@web/logo.png', ['alt'=>'', 'class'=>'icon', 'url ' => ['/site/index']]);
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav d-flex flex-row w-100 navbar-expand-lg navbar-light bg-gradient-warning justify-content-center'],
+        'options' => ['class' => 'navbar-nav d-flex flex-row w-100 navbar-expand-lg navbar-light bg-gradient-warning justify-content-center text-black'],
         'items' => [
-            ['label' => 'Inicio','url' => ['/site/index'],'linkOptions' => ['class' => 'nav-link nav-link-home px-2']],
-            ['label'=> 'Productos','url'=> ['#'],'linkOptions'=> ['nav-link nav-link-home px-2']],
-            ['label' => 'Acerca', 'url' => ['/site/about'],'linkOptions' => ['class' => 'nav-link nav-link-home px-2']],
-           // ['label' => 'Contactanos', 'url' => ['/site/contact'], 'linkOptions' => ['class' => 'nav-link nav-link-home px-1']],
-          
-            Yii::$app->user->isGuest
-                ? ['label' => 'Cuenta', 'url' => ['/site/login'], 'linkOptions' => ['class' => 'navitem']]: '<li class="nav-item align-items-end justify-content-end">'
-                    . Html::beginForm(['/site/logout'])
-                    . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->tbl_register_nombre . ')',
-                        ['class' => '--nav-link btn btn-link logout px-1']
-                    )
-                    . Html::endForm()
-                    . '</li>'
-        ]
+            ['label' => 'Inicio','url' => ['/site/index'],'linkOptions' => ['class' => 'py-3 nav-link nav-link-home px-2']],
+            ['label'=> 'Productos','url'=> ['#'],'linkOptions' => ['class' =>'py-3 nav-link nav-link-home px-2']],
+            ['label' => 'Acerca', 'url' => ['/site/about'],'linkOptions' => ['class' => 'py-3 nav-link nav-link-home px-2']],
+
+
+
+            Yii::$app->user->isGuest ? (
+            ['label' => 'Cuenta', 'url' => ['/site/login'], 'linkOptions' => ['class' => 'navitem']]) : (
+            ['label' => 'Cuenta (' . Yii::$app->user->identity->tbl_register_nombre . ')', 'linkOptions' =>
+            ['class' => 'navitem'], 'items' => [
+                ['label' => 'Perfil', 'url' => ['/user/profile'], 'linkOptions' => ['class' => '']],
+                ['label' => 'Configuración', 'url' => ['/user/settings'], 'linkOptions' => ['class' => '']],
+                ['label' => 'Logout', 'url' => ['/site/logout'], 'linkOptions' => [
+                    'data-method' => 'post',
+                    'class' => '',
+                ]],
+            ]]
+            ),
+        ],
     ]);
-    NavBar::end();
+NavBar::end();
     ?>
 </header>
 

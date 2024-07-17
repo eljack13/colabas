@@ -61,4 +61,17 @@ class Register extends \yii\db\ActiveRecord
             ->setTextBody($this->body)
             ->send();
     }
+    public function validateAttribute($attribute, $value)
+    {
+        if (!$this->hasErrors()) {
+            if ($this->$attribute === null) {
+                $this->addError($attribute, 'Este campo no puede estar vacío.');
+            } else {
+                if (!$this->isUnique($attribute, $value)) {
+                    $this->addError($attribute, 'Este nombre de usuario ya está en uso. Elige otro.');
+                }
+            }
+        }
+    }
+    
 }
